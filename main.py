@@ -5,7 +5,8 @@ target = ["testingtests"]
 
 targetProcesses = {}
 
-TOKEN = "1714618330:AAEbU_syFg6qkaL4OwSGLQ1o-S5hKCxONRk"
+TOKEN = "5363787602:AAEkOHh1HFSXSWeL8wy5LH9cCKqrmSljpXA"
+chat_id = 729560932
 
 updater = Updater(TOKEN, use_context=True)
 
@@ -37,8 +38,10 @@ while True:
         if process in existedProc.keys():
             del existedProc[process]
     for process in existedProc.keys():
+        updater = Updater(TOKEN, use_context=True)
+        text = f"Process {path} is down. Restarting."
+        updater.bot.sendMessage(chat_id, text)
         path = existedProc[process]
         cmd = f"python3 {path}"
         subprocess.Popen(cmd, shell=False)
-
     time.sleep(1)
