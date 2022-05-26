@@ -36,15 +36,17 @@ if __name__ == '__main__':
     while True:
         existedProc = targetProcesses
         processes = getProcesses()
+
         for process in processes:
             if process in existedProc.keys():
                 del existedProc[process]
+
         for process in existedProc.keys():
             updater = Updater(TOKEN, use_context=True)
             text = f"Process {path} is down. Restarting."
             updater.bot.sendMessage(chat_id, text)
             path = existedProc[process]
             print( existedProc[process])
-            cmd = f"cd ..|python3 {path}"
+            cmd = f"cd /|python3 {path}"
             subprocess.Popen(cmd, shell=False)
         time.sleep(1)
