@@ -39,7 +39,7 @@ print(targetProcesses)
 
 if __name__ == '__main__':
     while True:
-        existedProc = targetProcesses
+        existedProc = targetProcesses.copy()
         processes = getProcesses()
         print(processes)
         for process in processes:
