@@ -26,6 +26,7 @@ for tg in target:
     path = getPath(tg)
     if path[0]!=0:
         print(path[1])
+        continue
 
     path = path[1].split("\n")[0][7:]
 
@@ -41,10 +42,11 @@ if __name__ == '__main__':
         existedProc = targetProcesses
         processes = getProcesses()
         print(processes)
-        for process in processes:
-            if process in existedProc.keys():
-                print(process)
-                del existedProc[process]
+       for process in processes:
+            for name in existedProc.keys():
+                if name in process:
+                    print(process)
+                    del existedProc[process]
 
         for process in existedProc.keys():
             updater = Updater(TOKEN, use_context=True)
