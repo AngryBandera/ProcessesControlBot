@@ -1,4 +1,4 @@
 import time, sys
 
-time.sleep(10)
-sys.exit()
+while True:
+    time.sleep(1)
