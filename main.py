@@ -14,14 +14,13 @@ processes = subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
 
 procCount = 0
 
-if tg in target:
+for tg in target:
     path = getPath(tg).split("\n")[0][5:]
     if "deleted" in path:
         path = path[0:-10]
     targetProcesses[tg] = path+f"{target}.py"
     print(path)
     procCount+=1
-    continue
 
 def getProcesses():
     return subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
