@@ -26,9 +26,8 @@ for tg in target:
     path = getPath(tg)
     if path[0]!=0:
         print(path[1])
-        continue
 
-    path = path[1].split("\n")[0][5:]
+    path = path[1].split("\n")[0][7:]
 
     if "deleted" in path:
         path = path[0:-10]
