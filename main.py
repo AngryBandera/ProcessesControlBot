@@ -17,7 +17,7 @@ def getProcesses():
     return subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
 
 def getPath(name):
-    path = subprocess.getstatusoutput(f'ps -ef | grep "{name}" |grep -v grep| awk ''{print $2}'' | xargs pwdx')[1]
+    path = subprocess.getstatusoutput(f'ps -ef | grep "{name}" |grep -v grep| awk '{print $2}' | xargs pwdx')[1]
 
 for process in processes:
     for target in target:
@@ -25,7 +25,7 @@ for process in processes:
             path = getPath(target).split("\n")[0][5:]
             if "deleted" in path:
                 path = path[0:-10]
-            targetProcesses[target] = path
+            targetProcesses[target] = path+f"{target}.py"
             print(path)
             procCount+=1
             continue
