@@ -44,10 +44,10 @@ if __name__ == '__main__':
         print(processes)
         for process in processes:
             if process in existedProc.keys():
+                print(process)
                 del existedProc[process]
 
         for process in existedProc.keys():
-            del existedProc[process]
             updater = Updater(TOKEN, use_context=True)
             text = f"Process {path} is down. Restarting."
             updater.bot.sendMessage(chat_id, text)
