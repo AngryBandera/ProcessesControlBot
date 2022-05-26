@@ -37,7 +37,7 @@ for tg in target:
 
 print(targetProcesses)
 print()
-os.system("python3 " + getPath("test")[1].split("\n")[0][7:])
+os.system("python3 " + getPath("test")[1].split("\n")[0][7:]+"/test.py")
 print()
 if __name__ == '__main__':
     while True:
