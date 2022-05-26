@@ -45,6 +45,6 @@ if __name__ == '__main__':
             updater.bot.sendMessage(chat_id, text)
             path = existedProc[process]
             print( existedProc[process])
-            cmd = f"python3 {path}"
+            cmd = f"cd ..|python3 {path}"
             subprocess.Popen(cmd, shell=False)
         time.sleep(1)
