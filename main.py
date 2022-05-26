@@ -13,6 +13,16 @@ updater = Updater(TOKEN, use_context=True)
 processes = subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
 
 procCount = 0
+
+if tg in target:
+    path = getPath(tg).split("\n")[0][5:]
+    if "deleted" in path:
+        path = path[0:-10]
+    targetProcesses[tg] = path+f"{target}.py"
+    print(path)
+    procCount+=1
+    continue
+
 def getProcesses():
     return subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
 
@@ -20,32 +30,19 @@ def getPath(name):
     path = subprocess.getstatusoutput('ps -ef | grep "'+name+'" |grep -v grep| awk ''{print $2}'' | xargs pwdx')[1]
     return path
 
-for process in processes:
-    for target in target:
-        if target in process:
-            path = getPath(target).split("\n")[0][5:]
-            if "deleted" in path:
-                path = path[0:-10]
-            targetProcesses[target] = path+f"{target}.py"
-            print(path)
-            procCount+=1
-            continue
 
-if procCount<len(target):
-    print("Start target processes first")
-    sys.exit()
-
-while True:
-    existedProc = targetProcesses
-    processes = getProcesses()
-    for process in processes:
-        if process in existedProc.keys():
-            del existedProc[process]
-    for process in existedProc.keys():
-        updater = Updater(TOKEN, use_context=True)
-        text = f"Process {path} is down. Restarting."
-        updater.bot.sendMessage(chat_id, text)
-        path = existedProc[process]
-        cmd = f"python3 {path}"
-        subprocess.Popen(cmd, shell=False)
-    time.sleep(1)
+if __name__ == '__main__':
+    while True:
+        existedProc = targetProcesses
+        processes = getProcesses()
+        for process in processes:
+            if process in existedProc.keys():
+                del existedProc[process]
+        for process in existedProc.keys():
+            updater = Updater(TOKEN, use_context=True)
+            text = f"Process {path} is down. Restarting."
+            updater.bot.sendMessage(chat_id, text)
+            path = existedProc[process]
+            cmd = f"python3 {path}"
+            subprocess.Popen(cmd, shell=False)
+        time.sleep(1)
