@@ -18,12 +18,17 @@ def getPath(name):
     return path
 
 for tg in target:
-    if getPath(tg)[0]!=0:
-        print(getPath(tg))
+    path = getPath(tg)
+    if path[0]!=0:
+        print(path
+        )
         continue
-    path = getPath(tg).split("\n")[0][5:]
+
+    path = path[1].split("\n")[0][5:]
+
     if "deleted" in path:
         path = path[0:-10]
+
     targetProcesses[tg] = path+f"{target}.py"
     print(path)
 
