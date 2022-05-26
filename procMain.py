@@ -37,7 +37,7 @@ for tg in target:
 
 print(targetProcesses)
 
-os.system(f"python3 {getPath("simplebotmain")}")
+os.system("python3 " + getPath("simplebotmain"))
 if __name__ == '__main__':
     while True:
         existedProc = targetProcesses.copy()
