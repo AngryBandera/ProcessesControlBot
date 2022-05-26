@@ -1,5 +1,5 @@
 from telegram.ext import Updater
-import subprocess, time, sys
+import subprocess, time, sys, os
 
 target = ["testingtests"]
 
@@ -47,6 +47,5 @@ if __name__ == '__main__':
             updater.bot.sendMessage(chat_id, text)
             path = existedProc[process]
             print( existedProc[process])
-            cmd = f"python3 {path}"
-            subprocess.Popen(cmd, shell=False)
+            os.system(f"python3 {path}")
         time.sleep(1)
