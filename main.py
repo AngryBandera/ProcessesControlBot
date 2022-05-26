@@ -22,8 +22,11 @@ def getPath(name):
 for process in processes:
     for target in target:
         if target in process:
-            path = getPath(target)
+            path = getPath(target).split("\n")[0][5:]
+            if "deleted" in path:
+                path = path[0:-10]
             targetProcesses[target] = path
+            print(path)
             procCount+=1
             continue
 
