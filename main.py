@@ -29,7 +29,7 @@ for tg in target:
     if "deleted" in path:
         path = path[0:-10]
 
-    targetProcesses[tg] = path+f"{target}.py"
+    targetProcesses[tg] = path+f"{tg}.py"
     print(path)
 print(targetProcesses)
 
