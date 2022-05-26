@@ -14,7 +14,7 @@ def getProcesses():
     return subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
 
 def getPath(name):
-    path = subprocess.getstatusoutput('ps -ef | grep "'+name+'" |grep -v grep| awk ''{print $2}'' | xargs pwdx')
+    path = subprocess.getstatusoutput(f'ps -ef | grep "{name}"'+"|grep -v grep| awk '{print $2}' | xargs pwdx")
     return path
 
 for tg in target:
