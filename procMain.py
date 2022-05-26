@@ -44,7 +44,6 @@ if __name__ == '__main__':
         for process in processes:
             for name in targetProcesses.keys():
                 if name in process:
-                    print(process)
                     if name in existedProc:
                         del existedProc[name]
 
