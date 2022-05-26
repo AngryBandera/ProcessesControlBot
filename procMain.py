@@ -37,8 +37,6 @@ for tg in target:
 
 print(targetProcesses)
 print()
-os.system("python3 " + getPath("test")[1].split("\n")[0][7:]+"/test.py")
-print()
 if __name__ == '__main__':
     while True:
         existedProc = targetProcesses.copy()
@@ -54,5 +52,5 @@ if __name__ == '__main__':
             text = f"Process {path} is down. Restarting."
             updater.bot.sendMessage(chat_id, text)
             path = existedProc[process]
-            os.system(f"python3 {path}")
+            os.system(f"cd / && python3 {path}")
         time.sleep(1)
