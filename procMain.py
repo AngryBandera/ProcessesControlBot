@@ -25,8 +25,7 @@ def getPath(name):
 for tg in target:
     path = getPath(tg)
     if path[0]!=0:
-        print(path
-        )
+        print(path[1])
         continue
 
     path = path[1].split("\n")[0][5:]
@@ -42,12 +41,13 @@ if __name__ == '__main__':
     while True:
         existedProc = targetProcesses
         processes = getProcesses()
-
+        print(processes)
         for process in processes:
             if process in existedProc.keys():
                 del existedProc[process]
 
         for process in existedProc.keys():
+            del existedProc[process]
             updater = Updater(TOKEN, use_context=True)
             text = f"Process {path} is down. Restarting."
             updater.bot.sendMessage(chat_id, text)
