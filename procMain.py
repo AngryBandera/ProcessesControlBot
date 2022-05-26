@@ -36,13 +36,13 @@ for tg in target:
     targetProcesses[tg] = path+f"/{tg}.py"
 
 print(targetProcesses)
-
+print()
 os.system("python3 " + getPath("simplebotmain")[1].split("\n")[0][7:])
+print()
 if __name__ == '__main__':
     while True:
         existedProc = targetProcesses.copy()
         processes = getProcesses()
-        print(existedProc)
         for process in processes:
             for name in targetProcesses.keys():
                 if name in process:
