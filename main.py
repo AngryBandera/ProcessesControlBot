@@ -10,9 +10,12 @@ chat_id = 729560932
 
 updater = Updater(TOKEN, use_context=True)
 
-processes = subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
+def getProcesses():
+    return subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
 
-procCount = 0
+def getPath(name):
+    path = subprocess.getstatusoutput('ps -ef | grep "'+name+'" |grep -v grep| awk ''{print $2}'' | xargs pwdx')[1]
+    return path
 
 for tg in target:
     path = getPath(tg).split("\n")[0][5:]
@@ -20,14 +23,7 @@ for tg in target:
         path = path[0:-10]
     targetProcesses[tg] = path+f"{target}.py"
     print(path)
-    procCount+=1
 
-def getProcesses():
-    return subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
-
-def getPath(name):
-    path = subprocess.getstatusoutput('ps -ef | grep "'+name+'" |grep -v grep| awk ''{print $2}'' | xargs pwdx')[1]
-    return path
 
 
 if __name__ == '__main__':
