@@ -31,6 +31,7 @@ for tg in target:
 
     targetProcesses[tg] = path+f"{target}.py"
     print(path)
+print(targetProcesses)
 
 
 if __name__ == '__main__':
