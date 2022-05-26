@@ -41,7 +41,7 @@ if __name__ == '__main__':
     while True:
         existedProc = targetProcesses.copy()
         processes = getProcesses()
-        print(exsitedProc)
+        print(exsistedProc)
         for process in processes:
             for name in targetProcesses.keys():
                 if name in process:
