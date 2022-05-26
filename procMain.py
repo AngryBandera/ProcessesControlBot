@@ -42,7 +42,7 @@ if __name__ == '__main__':
         existedProc = targetProcesses
         processes = getProcesses()
         print(processes)
-       for process in processes:
+        for process in processes:
             for name in existedProc.keys():
                 if name in process:
                     print(process)
