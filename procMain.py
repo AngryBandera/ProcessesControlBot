@@ -45,7 +45,8 @@ if __name__ == '__main__':
             for name in targetProcesses.keys():
                 if name in process:
                     print(process)
-                    del existedProc[name]
+                    if name in existedProc:
+                        del existedProc[name]
 
         for process in existedProc.keys():
             updater = Updater(TOKEN, use_context=True)
