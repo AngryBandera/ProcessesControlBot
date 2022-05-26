@@ -1,7 +1,12 @@
 from telegram.ext import Updater
 import subprocess, time, sys, os
 
-target = ["testingtests"]
+target = input("Enter your processes, separated with /: ").split("/")
+
+targets = ""
+for t in target:targets+=t+" "
+
+print("Monitoring processes: " + targets)
 
 targetProcesses = {}
 
@@ -46,6 +51,5 @@ if __name__ == '__main__':
             text = f"Process {path} is down. Restarting."
             updater.bot.sendMessage(chat_id, text)
             path = existedProc[process]
-            print( existedProc[process])
             os.system(f"python3 {path}")
         time.sleep(1)
