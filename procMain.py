@@ -4,7 +4,6 @@ import subprocess, time, sys, os, subprocess
 f = open('data.txt', 'r')
 target, TOKEN, chat_id = f.read().split("|&|")
 
-target = target.split("/")
 targets = ""
 for t in target:targets+=t+" "
 
@@ -57,5 +56,5 @@ if __name__ == '__main__':
             text = f"Process {process} is down. Restarting."
             updater.bot.sendMessage(chat_id, text)
             print(text)
-            subprocess.Popen(f"cd {path} && python3 {process}.py", shell=False)
+            os.system(f"cd /{path} && python3 {process}.py")
         time.sleep(1)
