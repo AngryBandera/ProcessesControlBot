@@ -50,6 +50,7 @@ if __name__ == '__main__':
             updater = Updater(TOKEN, use_context=True)
             text = f"Process {path} is down. Restarting."
             updater.bot.sendMessage(chat_id, text)
+            print(text)
             path = existedProc[process]
             os.system(f"cd / && python3 {path}")
         time.sleep(1)
