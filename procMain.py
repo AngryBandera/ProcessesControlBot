@@ -1,13 +1,10 @@
 from telegram.ext import Updater
 import subprocess, time, sys, os
 
-#############Enter name of your process####################
-target = ["botsHandler"]
-################It's token from @processes_control_bot
-TOKEN = "5363787602:AAEkOHh1HFSXSWeL8wy5LH9cCKqrmSljpXA"
-###############Forward message to @JsonDumpBot, and from returned json excecute your chat_id
-chat_id = 729560932
+f = open('data.txt', 'r')
+target, TOKEN, chat_id = f.read().split("|&|")
 
+target = target.split("/")
 targets = ""
 for t in target:targets+=t+" "
 
@@ -15,8 +12,13 @@ print("Monitoring processes: " + targets)
 
 targetProcesses = {}
 
+errText = "display this help and exit"
 
-updater = Updater(TOKEN, use_context=True)
+try:
+    updater = Updater(TOKEN, use_context=True)
+except:
+    print("Valid token")
+    sys.exit()
 
 def getProcesses():
     return subprocess.getstatusoutput('ps -ef|grep python')[1].split("\n")
@@ -27,9 +29,9 @@ def getPath(name):
 
 for tg in target:
     path = getPath(tg)
-    if path[0]!=0:
-        print(path[1])
-        continue
+    if path[0]!=0 or errText in path[1]:
+        print("Enter valid process or start it")
+        sys.exit()
 
     path = path[1].split("\n")[0][7:]
 
