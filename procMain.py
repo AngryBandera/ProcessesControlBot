@@ -57,5 +57,5 @@ if __name__ == '__main__':
             text = f"Process {process} is down. Restarting."
             updater.bot.sendMessage(chat_id, text)
             print(text)
-            subprocess.Popen(f"cd /{path} && python3 {process}.py", shell=False)
+            subprocess.Popen(f"cd {path} && python3 {process}.py", shell=False)
         time.sleep(1)
