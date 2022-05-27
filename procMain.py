@@ -1,5 +1,5 @@
 from telegram.ext import Updater
-import subprocess, time, sys, os
+import subprocess, time, sys, os, subprocess
 
 f = open('data.txt', 'r')
 target, TOKEN, chat_id = f.read().split("|&|")
@@ -57,5 +57,5 @@ if __name__ == '__main__':
             text = f"Process {process} is down. Restarting."
             updater.bot.sendMessage(chat_id, text)
             print(text)
-            os.system(f"cd /{path} && python3 {process}.py")
+            subprocess.Popen(f"cd /{path} && python3 {process}.py", shell=False)
         time.sleep(1)
