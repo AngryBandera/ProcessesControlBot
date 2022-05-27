@@ -4,6 +4,7 @@ import subprocess, time, sys, os, subprocess
 f = open('data.txt', 'r')
 target, TOKEN, chat_id = f.read().split("|&|")
 
+target = target.split("/")
 targets = ""
 for t in target:targets+=t+" "
 
